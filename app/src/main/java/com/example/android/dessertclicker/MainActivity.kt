@@ -18,6 +18,8 @@ package com.example.android.dessertclicker
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
+import android.util.Log
+import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -63,6 +65,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.i("MainActivity", "onCreate Called")
 
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -116,6 +120,15 @@ class MainActivity : AppCompatActivity() {
             currentDessert = newDessert
             binding.dessertButton.setImageResource(newDessert.imageId)
         }
+    }
+
+    override fun onActionModeStarted(mode: ActionMode?) {
+        super.onActionModeStarted(mode)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("MainActivity", "onStart Called")
     }
 
     /**
