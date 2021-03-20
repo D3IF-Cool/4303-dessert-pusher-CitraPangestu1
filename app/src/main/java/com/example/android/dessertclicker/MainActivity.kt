@@ -37,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var dessertTimer: DessertTimer
+
+
     /** Dessert Data **/
 
     /**
@@ -76,6 +79,8 @@ class MainActivity : AppCompatActivity() {
             onDessertClicked()
         }
 
+        dessertTimer = DessertTimer()
+
         // Set the TextViews to the right values
         binding.revenue = revenue
         binding.amountSold = dessertsSold
@@ -84,31 +89,14 @@ class MainActivity : AppCompatActivity() {
         binding.dessertButton.setImageResource(currentDessert.imageId)
     }
 
+
+
     /**
      * Updates the score when the dessert is clicked. Possibly shows a new dessert.
      */
 
-    
-    override fun onResume() {
-        super.onResume()
-        Timber.i("onResume Called")
-    }
-    override fun onPause() {
-        super.onPause()
-        Timber.i("onPause Called")
-    }
-    override fun onStop() {
-        super.onStop()
-        Timber.i("onStop Called")
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.i("onDestroy Called")
-    }
-    override fun onRestart() {
-        super.onRestart()
-        Timber.i("onRestart Called")
-    }
+
+
 
 
     private fun onDessertClicked() {
@@ -156,6 +144,32 @@ class MainActivity : AppCompatActivity() {
         //Log.i("MainActivity", "onStart Called")
         Timber.i("onStart Called")
 
+        dessertTimer.startTimer()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("onResume Called")
+    }
+    override fun onPause() {
+        super.onPause()
+        Timber.i("onPause Called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStop Called")
+
+        dessertTimer.stopTimer()
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy Called")
+    }
+    override fun onRestart() {
+        super.onRestart()
+        Timber.i("onRestart Called")
     }
 
     /**
